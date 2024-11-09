@@ -2,6 +2,32 @@
 
 <%= render @post %>
 
+<!-- show comments -->
+<% if @post.comments.any? %>
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+    <div>
+      <strong><%= comment.user.username %>:</strong>
+      <%= comment.body %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- add comments -->
+<h2> Add a comment:</h2>
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <div>
+    <%= form.label :user_id %><br>
+    <%= form.text_field :user_id %>
+  </div>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
