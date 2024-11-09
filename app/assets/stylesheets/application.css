@@ -25,6 +25,10 @@
   text-decoration: none;
 }
 
+.brand-subtitle {
+  color: lightgrey;
+}
+
 .navbar-menu {
   list-style: none;
   display: flex;
